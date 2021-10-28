@@ -1,0 +1,95 @@
+{
+    "name": "electron-monitor-project",
+    "productName": "Display Monitor",
+    "version": "1.0.0",
+    "description": "Slide Show Image and Video",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "build-installer": "electron-builder --ia32 --x64 -w"
+    },
+    "build": {
+        "appId": "Display Monitor-app",
+        "copyright": "Copyright © year ${author}",
+        "win": {
+            "target": [
+                "nsis"
+            ],
+            "signingHashAlgorithms": [
+                "sha1",
+                "sha256"
+            ],
+            "icon": "src/img/icon.ico",
+            "requestedExecutionLevel": "asInvoker",
+            "legalTrademarks": "(c) 2021 Somnuek Mueanprasan",
+            "publisherName": "Somnuek Mueanprasan",
+            "verifyUpdateCodeSignature": true
+        },
+        "nsis": {
+            "createDesktopShortcut": true,
+            "shortcutName": "Display Monitor",
+            "uninstallDisplayName": "Display Monitor",
+            "installerIcon": "src/img/icon.ico",
+            "uninstallerIcon": "src/img/icon.ico",
+            "license": "license.txt",
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": false,
+            "deleteAppDataOnUninstall": true,
+            "runAfterFinish": true
+        }
+    },
+    "keywords": [
+        "display",
+        "monitor",
+        "video",
+        "images",
+        "slide show"
+    ],
+    "author": {
+        "name": "Somnuek Mueanprasan",
+        "email": "somnuekmueanprasan@gmail.com"
+    },
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [{
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "electron_monitor_project"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.57",
+        "@electron-forge/maker-deb": "^6.0.0-beta.57",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+        "@electron-forge/maker-zip": "^6.0.0-beta.57",
+        "electron": "13.1.2"
+    },
+    "dependencies": {
+        "auto-launch": "^5.0.5",
+        "dns": "^0.2.2",
+        "electron-squirrel-startup": "^1.0.0"
+    }
+}
